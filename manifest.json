@@ -17,8 +17,9 @@
         "contextMenus",
         "browsingData",
         "tabs",
+        "notifications",
         "storage",
-        "http://www.multitran.ru/"
+        "<all_urls>"
     ],
     "icons": {
       "16": "img/logo16.png",
@@ -27,7 +28,7 @@
     },
     "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": ["<all_urls>"],
       "css": ["css/dialog.css"],
       "js": ["js/content_script.js"]
     }

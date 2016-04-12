@@ -4,3 +4,5 @@
 node_modules
 build
 tran.zip
+/.vs/config/applicationhost.config
+*.suo

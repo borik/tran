@@ -28,11 +28,19 @@ class SearchForm
       onSelect: => @search()
     });
 
+    # if the current tab has selection in it, translate it on the spot
+    chrome.tabs.executeScript({code: "window.getSelection().toString();"}, (selection) => @getSelectionCallback(selection[0]));
+
   addListeners: ->
     if @form and @result
       @form.addEventListener 'submit', (e) => @search(e)
       @result.addEventListener 'click', (e) => @resultClickHandler(e)
 
+  getSelectionCallback: (selection) ->
+    if selection
+      @input.value = selection;
+      @search();
+	  
   search: (e) ->
     e && e.preventDefault && e.preventDefault()
     if @input.value.length > 0
